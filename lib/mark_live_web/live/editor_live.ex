@@ -39,18 +39,18 @@ defmodule MarkLiveWeb.EditorLive do
     """
   end
 
-  # When YOU type:
+  # When user types:
   def handle_event("sync_content", %{"content" => value}, socket) do
-    # 1. Tell everyone else to update their textarea
+    # tell everyone else to update their textarea
     Phoenix.PubSub.broadcast_from(MarkLive.PubSub, self(), @topic, {:update_text, value})
 
-    # 2. Update our local state
+    # update our local state
     {:noreply, assign(socket, content: value)}
   end
 
-  # When OTHERS type:
+  # When others type:
   def handle_info({:update_text, new_content}, socket) do
-    # This updates the @content assign, which re-renders the textarea for this user
+    # updates @content assign, which re-renders the textarea for this user
     {:noreply, assign(socket, content: new_content)}
   end
 end
