@@ -41,6 +41,7 @@ defmodule MarkLive.MixProject do
   defp deps do
     [
       {:phoenix, "~> 1.8.5"},
+      {:earmark, "~> 1.4"},
       {:phoenix_ecto, "~> 4.5"},
       {:ecto_sql, "~> 3.13"},
       {:postgrex, ">= 0.0.0"},
